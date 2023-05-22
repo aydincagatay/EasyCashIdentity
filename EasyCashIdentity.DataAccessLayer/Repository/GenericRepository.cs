@@ -30,7 +30,7 @@ namespace EasyCashIdentity.DataAccessLayer.Repository
         public T GetByIdAsync(int id)
         {
             using var context = new Context();
-            return context.Set<T>().Find(id);
+            return context.Set<T>().Find(id) ?? throw new Exception("Dosya bulunamadı");
         }
 
         public Task UpdateAsync(T entity)
